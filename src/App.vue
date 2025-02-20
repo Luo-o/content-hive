@@ -1,11 +1,7 @@
-<script setup>
-import { useUserStore } from '@/stores/index'
-const useStore = useUserStore()
-</script>
+<script setup></script>
 
 <template>
-  <div>{{ useStore.token }}</div>
-  <button>set</button>
+  <router-view></router-view>
 </template>
 
 <style scoped></style>

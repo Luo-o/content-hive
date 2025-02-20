@@ -1,3 +1,3 @@
 <script setup></script>
-<template><div id="login"></div></template>
+<template>登录页</template>
 <style scoped></style>
