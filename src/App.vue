@@ -1,6 +1,11 @@
-<script setup></script>
+<script setup>
+import { useUserStore } from '@/stores/index'
+const useStore = useUserStore()
+</script>
+
 <template>
-  <div>我是app</div>
+  <div>{{ useStore.token }}</div>
+  <button>set</button>
 </template>
 
 <style scoped></style>
