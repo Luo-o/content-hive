@@ -7,3 +7,4 @@ pinia.use(piniaPluginPersistedstate)
 export default pinia
 
 export * from './models/user'
+export * from './models/theme'

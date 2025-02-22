@@ -1,0 +1,21 @@
+:root {
+  --el-color-primary: #409eff; /* Element Plus 主色 */
+  --background-color: #ffffff; /* 白天模式背景色 */
+  --text-color: #6c6d71; /* 白天模式文字色 */
+  --menu-hover-bg-color: #ebf5ff;
+  --el-main-bg-color: #f5f5f7;
+}
+
+.dark {
+  --el-color-primary: #a0cfff; /* 黑暗模式主色 */
+  --background-color: #1a1a1a; /* 黑暗模式背景色 */
+  --text-color: #ffffff; /* 黑暗模式文字色 */
+  --menu-hover-bg-color: #313133;
+  --el-main-bg-color: #2c2c2c;
+}
+
+.el-switch {
+  --el-switch-off-color: #dcdfe6 !important;
+  --el-switch-on-color: #2c2c2c !important;
+  transform: scale(1.5);
+}
