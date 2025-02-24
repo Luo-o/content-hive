@@ -3,6 +3,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import pinia from '@/stores/index'
+
 import '@/assets/styles/main.scss'
 import '@/assets/styles/theme.scss'
 

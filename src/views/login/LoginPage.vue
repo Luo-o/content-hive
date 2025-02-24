@@ -17,7 +17,7 @@ const ruleForm = ref({
 const rules = ref({
   username: [
     { required: true, message: '请输入用户名', trigger: 'blur' },
-    { min: 6, max: 12, message: '用户名长度需要为6~12位字符', trigger: 'blur' }
+    { min: 5, max: 12, message: '用户名长度需要为5~12位字符', trigger: 'blur' }
   ],
   password: [
     { required: true, message: '请输入用户密码', trigger: 'blur' },

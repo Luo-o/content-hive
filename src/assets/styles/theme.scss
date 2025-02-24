@@ -3,6 +3,7 @@
   --background-color: #ffffff; /* 白天模式背景色 */
   --text-color: #6c6d71; /* 白天模式文字色 */
   --menu-hover-bg-color: #ebf5ff;
+  --table-hover-bg-color: #ebf5ff;
   --el-main-bg-color: #f5f5f7;
 }
 
@@ -11,11 +12,35 @@
   --background-color: #1a1a1a; /* 黑暗模式背景色 */
   --text-color: #ffffff; /* 黑暗模式文字色 */
   --menu-hover-bg-color: #313133;
+  --table-hover-bg-color: #313133;
   --el-main-bg-color: #2c2c2c;
+  --el-color-primary: #409eff !important;
 }
 
 .el-switch {
   --el-switch-off-color: #dcdfe6 !important;
   --el-switch-on-color: #2c2c2c !important;
   transform: scale(1.5);
+}
+
+.el-button--primary {
+  --el-color-primary: #409eff !important;
+}
+
+.el-input__wrapper,
+.el-select__wrapper,
+.el-drawer {
+  background-color: var(--background-color) !important;
+  transition-property: color, border-color, box-shadow, transform !important;
+}
+
+.el-pagination__sizes,
+.el-pagination__total,
+.el-select__input,
+.el-input__inner,
+.el-pagination__jump,
+.el-select__placeholder,
+.el-drawer__header,
+.el-form-item__label {
+  color: var(--text-color) !important;
 }
