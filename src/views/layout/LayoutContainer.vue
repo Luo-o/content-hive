@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
 import {
   Management,
   Promotion,
@@ -22,12 +22,15 @@ onMounted(() => {
   document.documentElement.classList.toggle('dark', themeStore.isDark)
 })
 
+onUnmounted(() => {
+  document.documentElement.classList.remove('dark') // 恢复默认主题
+})
+
 //获取用户基本信息进行渲染
 const userStore = useUserStore()
 onMounted(() => {
   userStore.getUserInfo()
 })
-
 // 处理下拉菜单点击相关指令
 const handleCommand = async (command) => {
   if (command === 'logout') {

@@ -120,7 +120,7 @@ watch(isRegister, () => {
             </el-button>
           </el-form-item>
           <el-form-item class="flex">
-            <el-link type="info" :underline="false" @click="isRegister = false"> ← 返回 </el-link>
+            <el-link type="info" :underline="false" @click="isRegister = false"> 返回登录 </el-link>
           </el-form-item>
         </el-form>
         <el-form
@@ -159,7 +159,7 @@ watch(isRegister, () => {
           </el-form-item>
           <el-form-item>
             <el-button @click="login" class="button" type="primary" auto-insert-space
-              >返回登录</el-button
+              >登录</el-button
             >
           </el-form-item>
           <el-form-item class="flex">
@@ -180,14 +180,14 @@ watch(isRegister, () => {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 60vh;
+    height: 70%;
     user-select: none;
     background-color: #fff;
-    padding: 30px 60px 10px;
+    padding: 10px 20px;
     border-radius: 10px;
     overflow: hidden;
     .title {
-      margin: 0 auto 10px;
+      margin: 10px auto;
     }
     .button {
       width: 100%;
