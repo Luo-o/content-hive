@@ -19,7 +19,8 @@ import router from '@/router'
 // 初始化主题
 const themeStore = useThemeStore()
 onMounted(() => {
-  document.documentElement.classList.toggle('dark', themeStore.isDark)
+  // document.documentElement.classList.toggle('dark', themeStore.isDark)
+  themeStore.toggleDark()
 })
 
 onUnmounted(() => {
