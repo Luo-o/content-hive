@@ -15,14 +15,16 @@
 import * as echarts from 'echarts'
 import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue'
 import { useThemeStore } from '@/stores/index'
+import '@/utils/echartsThemes'
 
 // 获取主题状态
 const themeStore = useThemeStore()
 const isDark = computed(() => themeStore.isDark)
 
 // 图表相关逻辑
-const chart = ref(null)
+const chart = ref(null) // dom对象，指向dom
 const currentMode = ref('day') // 当前模式：day 或 month
+let chartInstance = null // 保存ECharts实例
 
 // 生成图表数据
 const chartData = computed(() => {
@@ -57,24 +59,24 @@ const getChartOption = () => {
 
   return {
     tooltip: {
-      trigger: 'axis',
-      textStyle: {
-        color: isDark.value ? '#fff' : '#333'
-      }
+      trigger: 'axis'
+      // textStyle: {
+      //   color: isDark.value ? '#fff' : '#333'
+      // }
     },
     xAxis: {
       type: 'category',
-      data: xData,
-      axisLabel: {
-        color: isDark.value ? '#fff' : '#333'
-      }
+      data: xData
+      // axisLabel: {
+      //   color: isDark.value ? '#fff' : '#333'
+      // }
     },
     yAxis: {
       type: 'value',
-      minInterval: 1,
-      axisLabel: {
-        color: isDark.value ? '#fff' : '#333'
-      }
+      minInterval: 1
+      // axisLabel: {
+      //   color: isDark.value ? '#fff' : '#333'
+      // }
     },
     series: [
       {
@@ -94,18 +96,18 @@ const getChartOption = () => {
           ])
         }
       }
-    ],
-    textStyle: {
-      color: isDark.value ? '#fff' : '#333'
-    }
+    ]
+    // textStyle: {
+    //   color: isDark.value ? '#fff' : '#333'
+    // }
   }
 }
 
 // 更新图表
 const updateChart = () => {
-  if (chart.value) {
+  if (chartInstance) {
     const option = getChartOption()
-    chart.value.setOption(option)
+    chartInstance.setOption(option)
   }
 }
 
@@ -122,19 +124,24 @@ const onChangeMode = (value) => {
 
 // 初始化图表
 onMounted(() => {
-  chart.value = echarts.init(chart.value)
+  chartInstance = echarts.init(chart.value, isDark.value ? 'darkTheme' : 'lightTheme')
   updateChart()
 })
 
 // 监听主题变化
 watch(isDark, () => {
-  updateChart()
+  if (chartInstance) {
+    // 销毁当前图表并重新初始化，应用新主题
+    chartInstance.dispose()
+    chartInstance = echarts.init(chart.value, isDark.value ? 'darkTheme' : 'lightTheme')
+    updateChart()
+  }
 })
 
 // 销毁图表
 onBeforeUnmount(() => {
   if (chart.value) {
-    chart.value.dispose()
+    chartInstance.dispose()
   }
 })
 </script>

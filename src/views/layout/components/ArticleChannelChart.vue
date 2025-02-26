@@ -10,6 +10,7 @@ import { PieChart } from 'echarts/charts'
 import { TitleComponent, TooltipComponent, LegendComponent } from 'echarts/components'
 import { CanvasRenderer } from 'echarts/renderers'
 import { useThemeStore } from '@/stores/index'
+import '@/utils/echartsThemes'
 
 // 获取主题状态
 const themeStore = useThemeStore()
@@ -20,6 +21,7 @@ echarts.use([PieChart, TitleComponent, TooltipComponent, LegendComponent, Canvas
 
 // 图表容器
 const chart = ref(null)
+let chartInstance = null
 
 // 饼图数据
 const pieData = [
@@ -34,7 +36,6 @@ const colors = ['#2a7dae', '#50a0d0', '#81c5eb', '#b5def6']
 
 // 获取图表配置
 const getChartOption = () => {
-  const textColor = isDark.value ? '#fff' : '#333' // 动态文字颜色
   return {
     tooltip: {
       trigger: 'item'
@@ -43,8 +44,7 @@ const getChartOption = () => {
       orient: 'horizontal',
       left: 'left',
       textStyle: {
-        fontSize: 10,
-        color: textColor // 图例文字颜色
+        fontSize: 10
       }
     },
     series: [
@@ -56,15 +56,11 @@ const getChartOption = () => {
         itemStyle: {
           color: (params) => colors[params.dataIndex % colors.length] // 按索引分配颜色
         },
-        label: {
-          color: textColor // 饼图标签文字颜色
-        },
         emphasis: {
           label: {
             show: true,
             fontSize: '14',
-            fontWeight: 'bold',
-            color: textColor // 强调状态下的标签文字颜色
+            fontWeight: 'bold'
           },
           itemStyle: {
             shadowBlur: 10,
@@ -79,21 +75,23 @@ const getChartOption = () => {
 
 // 初始化图表
 onMounted(() => {
-  chart.value = echarts.init(chart.value)
-  chart.value.setOption(getChartOption())
+  chartInstance = echarts.init(chart.value, isDark.value ? 'darkTheme' : 'lightTheme')
+  chartInstance.setOption(getChartOption())
 })
 
 // 监听主题变化
 watch(isDark, () => {
-  if (chart.value) {
-    chart.value.setOption(getChartOption())
+  if (chartInstance) {
+    chartInstance.dispose()
+    chartInstance = echarts.init(chart.value, isDark.value ? 'darkTheme' : 'lightTheme')
+    chartInstance.setOption(getChartOption())
   }
 })
 
 // 销毁图表
 onBeforeUnmount(() => {
-  if (chart.value) {
-    chart.value.dispose()
+  if (chartInstance) {
+    chartInstance.dispose()
   }
 })
 </script>
@@ -102,5 +100,6 @@ onBeforeUnmount(() => {
 .pie-chart {
   width: 100%;
   height: 300px;
+  margin-top: 2px;
 }
 </style>

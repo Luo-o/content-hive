@@ -57,24 +57,35 @@ const handleCommand = async (command) => {
   <el-container class="layout-container">
     <el-header>
       <div class="el-header-logo">ContentHive</div>
-      <div class="el-header-user">
-        用户：<strong>{{ userStore.userInfo.nickname || userStore.userInfo.username }}</strong
-        >，您好！
+      <div style="position: absolute; right: 30px">
+        <el-switch
+          class="dark-switch"
+          size="large"
+          v-model="themeStore.isDark"
+          :active-action-icon="MoonNight"
+          :inactive-action-icon="Sunny"
+          active-color="var(--el-switch-on-color)"
+          inactive-color="var(--el-switch-off-color)"
+          @change="themeStore.toggleDark"
+        />
+        <el-dropdown placement="bottom-end" @command="handleCommand">
+          <span class="el-dropdown__box">
+            <el-avatar :src="userStore.userInfo.user_pic || avatar" />
+            <span style="margin-left: 10px; color: var(--text-color); cursor: default">{{
+              userStore.userInfo.username
+            }}</span>
+            <el-icon><CaretBottom /></el-icon>
+          </span>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item command="profile" :icon="User">基本资料</el-dropdown-item>
+              <el-dropdown-item command="avatar" :icon="Crop">更换头像</el-dropdown-item>
+              <el-dropdown-item command="password" :icon="EditPen">重置密码</el-dropdown-item>
+              <el-dropdown-item command="logout" :icon="SwitchButton">退出登录</el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
       </div>
-      <el-dropdown placement="bottom-end" @command="handleCommand">
-        <span class="el-dropdown__box">
-          <el-avatar :src="userStore.userInfo.user_pic || avatar" />
-          <el-icon><CaretBottom /></el-icon>
-        </span>
-        <template #dropdown>
-          <el-dropdown-menu>
-            <el-dropdown-item command="profile" :icon="User">基本资料</el-dropdown-item>
-            <el-dropdown-item command="avatar" :icon="Crop">更换头像</el-dropdown-item>
-            <el-dropdown-item command="password" :icon="EditPen">重置密码</el-dropdown-item>
-            <el-dropdown-item command="logout" :icon="SwitchButton">退出登录</el-dropdown-item>
-          </el-dropdown-menu>
-        </template>
-      </el-dropdown>
     </el-header>
     <el-container>
       <el-aside width="200px">
@@ -116,16 +127,6 @@ const handleCommand = async (command) => {
             </el-menu-item>
           </el-sub-menu>
         </el-menu>
-        <el-switch
-          class="dark-switch"
-          size="large"
-          v-model="themeStore.isDark"
-          :active-action-icon="MoonNight"
-          :inactive-action-icon="Sunny"
-          active-color="var(--el-switch-on-color)"
-          inactive-color="var(--el-switch-off-color)"
-          @change="themeStore.toggleDark"
-        />
       </el-aside>
       <el-main>
         <div style="background-color: var(--background-color); height: 100%">
@@ -150,14 +151,10 @@ const handleCommand = async (command) => {
         --el-menu-hover-bg-color: var(--menu-hover-bg-color) !important;
       }
     }
-    .dark-switch {
-      position: absolute;
-      left: 30px;
-      bottom: 30px;
-    }
   }
   .el-header {
     display: flex;
+    position: relative;
     align-items: center;
     .el-header-logo {
       width: 200px;
@@ -167,6 +164,12 @@ const handleCommand = async (command) => {
     }
     .el-header-user {
       flex-grow: 4;
+    }
+    .dark-switch {
+      margin-right: 30px;
+      --el-switch-off-color: #dcdfe6 !important;
+      --el-switch-on-color: #2c2c2c !important;
+      transform: scale(1.1);
     }
     .el-dropdown__box {
       display: flex;
