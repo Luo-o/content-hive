@@ -1,8 +1,9 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
+// const { createRouter, createWebHashHistory } = window.VueRouter
 import { useUserStore } from '@/stores/index'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     { path: '/login', component: () => import('@/views/login/LoginPage.vue') },
     {

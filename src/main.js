@@ -1,4 +1,6 @@
 import { createApp } from 'vue'
+// 从全局变量获取
+// const { createApp } = window.Vue
 
 import App from './App.vue'
 import router from './router'

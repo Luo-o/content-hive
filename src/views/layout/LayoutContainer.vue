@@ -1,5 +1,6 @@
 <script setup>
 import { onMounted, onUnmounted } from 'vue'
+// const { onMounted, onUnmounted } = window.Vue
 import {
   Management,
   Promotion,

@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import * as echarts from 'echarts'
+import echarts from '@/utils/commonEcharts'
 import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue'
 import { useThemeStore } from '@/stores/index'
 import '@/utils/echartsThemes'
@@ -59,24 +59,25 @@ const getChartOption = () => {
 
   return {
     tooltip: {
-      trigger: 'axis'
-      // textStyle: {
-      //   color: isDark.value ? '#fff' : '#333'
-      // }
+      trigger: 'axis',
+      backgroundColor: isDark.value ? '#2c2c2c' : '#ffffff', // 背景色
+      textStyle: {
+        color: isDark.value ? '#fff' : '#333'
+      }
     },
     xAxis: {
       type: 'category',
-      data: xData
-      // axisLabel: {
-      //   color: isDark.value ? '#fff' : '#333'
-      // }
+      data: xData,
+      axisLabel: {
+        color: isDark.value ? '#fff' : '#333'
+      }
     },
     yAxis: {
       type: 'value',
-      minInterval: 1
-      // axisLabel: {
-      //   color: isDark.value ? '#fff' : '#333'
-      // }
+      minInterval: 1,
+      axisLabel: {
+        color: isDark.value ? '#fff' : '#333'
+      }
     },
     series: [
       {
@@ -96,10 +97,10 @@ const getChartOption = () => {
           ])
         }
       }
-    ]
-    // textStyle: {
-    //   color: isDark.value ? '#fff' : '#333'
-    // }
+    ],
+    textStyle: {
+      color: isDark.value ? '#fff' : '#333'
+    }
   }
 }
 
@@ -132,9 +133,10 @@ onMounted(() => {
 watch(isDark, () => {
   if (chartInstance) {
     // 销毁当前图表并重新初始化，应用新主题
-    chartInstance.dispose()
-    chartInstance = echarts.init(chart.value, isDark.value ? 'darkTheme' : 'lightTheme')
-    updateChart()
+    // chartInstance.dispose()
+    // chartInstance = echarts.init(chart.value, isDark.value ? 'darkTheme' : 'lightTheme')
+    // updateChart()
+    chartInstance.setOption(getChartOption())
   }
 })
 

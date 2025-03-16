@@ -173,19 +173,19 @@ watch(isRegister, () => {
 
 <style lang="scss" scoped>
 .login-page {
-  height: 100vh;
-  align-items: center;
-  background: url('@/assets/login_bg.jpg') no-repeat center / cover;
+  // height: 100vh;
+  // align-items: center;
+  // background: url('@/assets/login_bg.jpg') no-repeat center / cover;
   .form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 70%;
-    user-select: none;
-    background-color: #fff;
-    padding: 10px 20px;
-    border-radius: 10px;
-    overflow: hidden;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // height: 70%;
+    // user-select: none;
+    // background-color: #fff;
+    // padding: 10px 20px;
+    // border-radius: 10px;
+    // overflow: hidden;
     .title {
       margin: 10px auto;
     }

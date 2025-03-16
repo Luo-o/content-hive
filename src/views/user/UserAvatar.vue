@@ -1,4 +1,5 @@
 <script setup>
+// const { ref } = window.Vue
 import { ref } from 'vue'
 import { Plus, Upload } from '@element-plus/icons-vue'
 import { useUserStore } from '@/stores'

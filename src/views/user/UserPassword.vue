@@ -1,4 +1,5 @@
 <script setup>
+// const { ref, reactive } = window.Vue
 import { ref, reactive } from 'vue'
 import { ElMessage } from 'element-plus'
 import PageContainer from '@/components/PageContainer.vue'

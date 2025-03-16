@@ -1,5 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
+// const { defineStore } = window.Pinia
+// const { ref } = window.Vue
 import { userInfoRequest } from '@/api/user'
 
 // 用户模块： id, 具体内容， 持久化

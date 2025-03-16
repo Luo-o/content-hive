@@ -1,5 +1,4 @@
 <script setup>
-import { ref } from 'vue'
 import ChannelSelect from './ChannelSelect.vue'
 import { Plus } from '@element-plus/icons-vue'
 import { QuillEditor } from '@vueup/vue-quill'
@@ -11,7 +10,7 @@ import {
 } from '@/api/article'
 import axios from 'axios'
 import { baseURL } from '@/utils/request'
-import { nextTick } from 'vue'
+import { nextTick, ref } from 'vue'
 
 const visibleDrawer = ref(false)
 const imageUrl = ref('')

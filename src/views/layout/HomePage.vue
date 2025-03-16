@@ -41,12 +41,16 @@ const cardList = [
       </el-row>
     </el-card>
     <div class="charts">
-      <el-card class="box-card-charts box-card-chart-articles">
-        <article-statistics-chart></article-statistics-chart>
-      </el-card>
-      <el-card class="box-card-charts box-card-chart-channels">
-        <article-channel-chart></article-channel-chart>
-      </el-card>
+      <keep-alive>
+        <el-card class="box-card-charts box-card-chart-articles">
+          <article-statistics-chart></article-statistics-chart>
+        </el-card>
+      </keep-alive>
+      <keep-alive>
+        <el-card class="box-card-charts box-card-chart-channels">
+          <article-channel-chart></article-channel-chart>
+        </el-card>
+      </keep-alive>
     </div>
   </main>
 </template>

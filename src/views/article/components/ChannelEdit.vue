@@ -1,4 +1,5 @@
 <script setup>
+// const { ref } = window.Vue
 import { ref } from 'vue'
 import { artAddChannelService, artEditChannelService } from '@/api/article'
 import { ElMessage } from 'element-plus'

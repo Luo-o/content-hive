@@ -1,4 +1,5 @@
 <script setup>
+// const { ref } = window.Vue
 import { ref } from 'vue'
 import { Edit, Delete } from '@element-plus/icons-vue'
 import { artChannelsService, artDeleteChannelService } from '@/api/article'

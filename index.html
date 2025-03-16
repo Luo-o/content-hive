@@ -1,9 +1,36 @@
-<!DOCTYPE html>
-<html lang="">
+<!doctype html>
+<html lang="zh-CN">
   <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <style>
+      /* 内联登录页关键样式 */
+      .login-page {
+        height: 100vh;
+        align-items: center;
+        background: url('/src/assets/login_bg.webp') no-repeat center/cover; /* 转换为WebP格式 */
+      }
+      .form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: #fff;
+        padding: 10px 20px;
+        border-radius: 10px;
+      }
+
+      /* 覆盖Element Plus默认加载样式（避免布局偏移） */
+      [data-v-app] {
+        opacity: 1 !important;
+      }
+    </style>
+    <link rel="preload" href="/src/assets/login_bg.webp" as="image" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/echarts@5.6.0/dist/echarts.min.js"
+      crossorigin="anonymous"
+      async
+    ></script>
     <title>Vite App</title>
   </head>
   <body>

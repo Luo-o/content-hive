@@ -1,4 +1,5 @@
 <script setup>
+// const { ref } = window.vue
 import { ref } from 'vue'
 import { artChannelsService } from '@/api/article'
 const channelList = ref({})
